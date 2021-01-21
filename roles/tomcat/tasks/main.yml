@@ -9,6 +9,17 @@
       group: tomcat
       home: /usr/share/tomcat
       createhome: no
+    
+  - name: ensure tomcat directory exists
+    file:
+      path: /opt/tomcat
+      state: directory
+
+ - unarchive: 
+      src: http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
+      dest: /opt/tomcat/  # already existing path
+      creates: /opt/tomcat/config  # some path to make sure that the archive has already been unpacked
+      remote_src: yes 
 
   - name: Extract archive
     become: yes
