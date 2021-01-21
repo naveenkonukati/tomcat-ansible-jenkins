@@ -10,26 +10,19 @@
       home: /usr/share/tomcat
       
     
-  - name: ensure tomcat directory exists
-    file:
-      path: /opt/tomcat
-      state: directory
+  - name: download tomcat
+    get_url:
+      url: http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
+      dest: /opt/apache-tomcat-8.5.15
+      
   - name: Extract archive
     become: yes
     unarchive: 
-      src: http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
-      dest: /opt/tomcat/  # already existing path
-      creates: /opt/tomcat/config  # some path to make sure that the archive has already been unpacked
-      remote_src: yes 
-
-  - name: Extract archive
-    become: yes
-    unarchive:
-      src: http://archive.apache.org/dist/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz
-      dest: /opt/tomcat8
+      src: /opt/apache-tomcat-8.5.15
+      dest: /opt/apache-tomcat-8.5.15  # already existing path
       creates: yes
-      remote_src: yes
-
+      remote_src: true 
+      
   - name: Symlink install directory
     file:
       src: /opt/tomcat8
