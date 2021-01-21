@@ -10,15 +10,15 @@
       home: /usr/share/tomcat
       
     
-  - name: download tomcat
-    get_url:
-      url: http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
-      dest: /opt/apache-tomcat-8.5.15
+  #- name: download tomcat
+   # get_url:
+    #  url: http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
+     # dest: /opt/apache-tomcat-8.5.15
       
   - name: Extract archive
     become: yes
     unarchive: 
-      src: /opt/apache-tomcat-8.5.15
+      src: http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.15/bin/apache-tomcat-8.5.15.tar.gz
       dest: /opt/apache-tomcat-8.5.15  # already existing path
       creates: yes
       remote_src: true 
