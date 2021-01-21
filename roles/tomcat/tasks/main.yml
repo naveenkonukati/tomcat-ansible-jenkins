@@ -19,12 +19,12 @@
   - name: Extract archive
     unarchive:
       src: /opt/apache-tomcat-8.5.51.tar.gz
-      dest: /opt/apache-tomcat
+      dest: /usr/share/tomcat/
       remote_src: yes
 
   - name: Symlink install directory
     file:
-      src: apache-tomcat
+      src: /usr/share/tomcat/apache-tomcat-8.5.51
       path: /usr/share/tomcat
       state: link
 
