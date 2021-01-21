@@ -8,7 +8,7 @@
       name: tomcat
       group: tomcat
       home: /usr/share/tomcat
-      createhome: no
+      
     
   - name: ensure tomcat directory exists
     file:
