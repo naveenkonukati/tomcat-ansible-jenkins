@@ -1,0 +1,11 @@
+---
+ - name: upgrade packages
+   yum:
+     name: "*"
+     state: latest
+ 
+ - name: Install Java 1.8
+   yum:
+     name: "{{java_name}}"
+     state: present
+

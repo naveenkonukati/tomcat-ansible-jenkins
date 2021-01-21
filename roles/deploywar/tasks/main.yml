@@ -1,0 +1,9 @@
+---
+ - name: Download petclinic war from nexus
+   get_url:
+     url: http://18.223.3.225:8081/nexus/content/repositories/releases/org/springframework/boot/spring-boot-samples/1.4.1/spring-boot-samples-1.4.1.spring-boot-samples/spring-boot-sample-atmosphere/target/spring-boot-sample-atmosphere-1.4.0.RELEASE.jar
+     dest: "{{ TOMCAT_HOME }}/webapps/jenkins.jar"
+     url_username: "{{ NEXUS_USER }}"
+     url_password: "{{ NEXUS_PASS }}"
+     validate_certs: no
+   notify: restart tomcat
